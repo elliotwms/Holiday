@@ -93,4 +93,30 @@ abstract class AbstractProvider implements ProviderInterface
         );
     }
 
+    /**
+     * @param $year
+     * @param $month
+     * @param $day
+     *
+     * @return \DateTime
+     */
+    protected function nextWeekday($year, $month, $day)
+    {
+        $date = new \DateTime();
+        $date->setDate($year, $month, $day);
+
+        switch ($date->format('w')) {
+            case 7:
+                $date->add(new \DateInterval('P2D'));
+                break;
+            case 0:
+                $date->add(new \DateInterval('P1D'));
+                break;
+            default:
+                break;
+        }
+
+        return $date;
+    }
+
 }
