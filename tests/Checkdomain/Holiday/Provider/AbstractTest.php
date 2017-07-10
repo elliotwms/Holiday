@@ -13,6 +13,11 @@ abstract class AbstractTest extends \PHPUnit_Framework_TestCase
     protected $provider;
 
     /**
+     * @return array[]
+     */
+    abstract public function dateProvider();
+
+    /**
      * @param string $date
      * @param string $state
      * @param array  $expectation
